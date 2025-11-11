@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 1s        # cada cuánto Prometheus consulta a los exporters
+  evaluation_interval: 1s    # opcional: frecuencia de evaluación de reglas
+
+scrape_configs:
+  - job_name: 'tello_exporters'
+    static_configs:
+      - targets: ['localhost:8000']
+
