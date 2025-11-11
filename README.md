@@ -159,6 +159,43 @@ ros2 service call /tello/stream_on std_srvs/srv/Trigger {}
 ros2 service call /tello/stream_off std_srvs/srv/Trigger {}
 ```
 
+
+---
+
+### 📊 Integración con Prometheus y Grafana
+
+El sistema incluye soporte nativo para **monitorización de métricas** mediante **Prometheus** y **Grafana**, lo que permite visualizar en tiempo real variables como batería, altura, velocidad y conteo de objetos detectados.
+
+#### 🚀 Lanzar contenedores de Prometheus y Grafana
+
+Asegúrate de tener el archivo `prometheus.yml` en la ruta indicada dentro del repositorio (`proyecto1_ws/prometheus.yml`).  
+Luego, ejecuta los siguientes contenedores:
+
+```bash
+# Contenedor de Prometheus
+docker run -d \
+  --name prom_proyecto1 \
+  --network host \
+  -p 9090:9090 \
+  -v ~/Documentos/WSN/Proyecto_1/proyecto1_ws/prometheus.yml:/etc/prometheus/prometheus.yml:ro \
+  prom/prometheus:latest
+```
+
+# Contenedor de Grafana
+```bash
+docker run -d \
+  --name grafana_proyecto1 \
+  --network host \
+  -p 3000:3000 \
+  grafana/grafana-oss:latest
+```
+
+Una vez levantados los servicios:
+- Prometheus estará disponible en http://localhost:9090
+- Grafana estará disponible en http://localhost:3000
+
+Desde Grafana puedes añadir Prometheus como fuente de datos (http://localhost:9090) y crear o importar dashboards personalizados para visualizar las métricas del drone.
+
 ---
 
 ## ⚙️ Dependencias principales
@@ -176,7 +213,7 @@ ros2 service call /tello/stream_off std_srvs/srv/Trigger {}
 
 ---
 
-## 👨‍💻 Autor
+## 👨‍💻 Autores
 **Israel Delgado - Anthony Domínguez - Sebastián Guazhima**  
 Universidad de Cuenca – 2025  
 Facultad de Ingeniería – Proyecto de Redes de Sensores Inalámbricos (WSN)
