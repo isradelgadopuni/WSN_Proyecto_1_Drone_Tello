@@ -1,7 +1,9 @@
 # 🛰️ WSN Proyecto 1 – Drone Tello (ROS2 Jazzy)
 
-Proyecto modular en **ROS2 Jazzy** para el control, planeación de misión y monitoreo de un **drone DJI Tello**.  
-El sistema se organiza en múltiples nodos independientes que se comunican entre sí mediante tópicos ROS2, permitiendo la gestión integral del dron: conexión, visión, telemetría, seguridad y autonomía.
+Proyecto modular en **ROS2 Jazzy** para el **control, planeación de misión y monitoreo** de un **drone DJI Tello**.  
+El sistema se organiza en múltiples nodos independientes que se comunican entre sí mediante tópicos ROS2, permitiendo la gestión integral del dron: conexión, visión, telemetría, seguridad y autonomía.  
+Además, incluye integración con **Prometheus + Grafana** para la **exportación y visualización de métricas** en tiempo real (batería, altura, velocidad, detección de objetos, entre otras).
+
 
 ---
 
