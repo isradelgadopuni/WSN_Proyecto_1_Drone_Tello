@@ -1,25 +1,21 @@
 # Python
 __pycache__/
 *.py[cod]
-*.pyo
-*.egg-info/
 .venv/
 .env
 
-# ROS2 / colcon
+# ROS2
 build/
 install/
 log/
 
-# IDE
+# IDEs
 .vscode/
 .idea/
 
-# Vídeos y artefactos pesados (ver LFS abajo)
+# Archivos grandes
 *.mp4
 *.avi
 *.mkv
 *.mov
-
-# Otros
-.DS_Store
+*.bag
