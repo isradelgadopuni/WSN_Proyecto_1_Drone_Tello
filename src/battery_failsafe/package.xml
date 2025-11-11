@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>battery_failsafe</name>
+  <version>0.0.1</version>
+  <description>Nodo ROS2 para aterrizaje automático del dron Tello en caso de batería baja.</description>
+
+  <maintainer email="israel@example.com">israel</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+  <depend>std_srvs</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
+

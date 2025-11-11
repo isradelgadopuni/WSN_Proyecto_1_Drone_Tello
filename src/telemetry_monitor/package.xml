@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>telemetry_monitor</name>
+  <version>0.1.0</version>
+  <description>Nodo ROS 2 para mostrar la telemetría y estados del dron Tello en consola.</description>
+
+  <maintainer email="israel@example.com">Israel</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
+

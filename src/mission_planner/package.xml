@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>mission_planner</name>
+  <version>0.1.0</version>
+  <description>Nodo Mission Planner: ejecuta una secuencia autónoma simple del dron Tello.</description>
+
+  <maintainer email="israel@example.com">israel</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>geometry_msgs</depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
+
