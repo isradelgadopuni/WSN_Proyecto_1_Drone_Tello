@@ -18,6 +18,7 @@ src/
 ├── telemetry_monitor/     # Nodo de monitoreo de telemetría y estado del dron
 ├── video_viewer/          # Nodo para visualización del stream de video
 └── vision_detector/       # Nodo de detección de objetos (visión por computadora)
+└── exporter_node/         # Nodo de exportación hacia Prometheus
 ```
 
 > 💡 **Nota:**  
@@ -29,7 +30,7 @@ src/
 ## 🧩 Descripción de nodos principales
 
 | Nodo | Paquete | Función |
-|------|----------|---------|
+|------|---------|---------|
 | **0. driver_node** | `driver_tello` | Interfaz principal con el dron DJI Tello mediante SDK. Inicia la comunicación base y publica/escucha en tópicos comunes. |
 | **1. drone_connector** | `drone_connector` | Coordina la comunicación entre módulos y maneja mensajes ROS entre el driver y los demás nodos. |
 | **2. video_viewer** | `video_viewer` | Procesa y muestra el stream de video proveniente del dron. |
@@ -37,6 +38,7 @@ src/
 | **4. battery_failsafe** | `battery_failsafe` | Gestiona condiciones críticas de energía y activa protocolos de emergencia. |
 | **5. mission_planner** | `mission_planner` | Ejecuta misiones automáticas, rutas o comportamientos predefinidos. |
 | **6. object_detector** | `vision_detector` | Aplica detección de objetos en tiempo real sobre el stream de video. |
+| **7. prom_exporter** | `tello_prom_exporter` | **Exporta métricas a Prometheus** leyendo tópicos ROS2 y expone `:8000/metrics`. Métricas: `objects_red_count`, `objects_black_count`, `tello_battery_percent`, `tello_height_raw`, `tello_velocity_{x,y,z}_mps`, `tello_speed_norm_mps`. Parámetros: `drone_id`, `qos_mode` (`best_effort`/`reliable`), y nombres de tópicos (`/objects/red_count`, `/objects/black_count`, `/tello/{battery,height,velocity}`). |
 
 > 🔗 Todos los nodos se comunican bajo ROS2.  
 > El nodo `driver_node` (NODO 0) **debe iniciarse primero**, ya que los demás dependen de los tópicos que este publica.
@@ -137,6 +139,14 @@ docker exec -it wsn_tello_proyecto1 bash -lc \
  ros2 run object_detector object_detector"
 ```
 
+#### ⚪ NODO 7 – `tello_prom_exporter`
+```bash
+docker exec -it wsn_tello_proyecto1 bash -lc \
+"source /opt/ros/jazzy/setup.bash && \
+ source /root/ros2_ws/install/setup.bash && \
+ ros2 run exporter_node tello_prom_exporter"
+```
+
 ---
 
 ## 🎥 Control del stream de video
@@ -165,10 +175,10 @@ ros2 service call /tello/stream_off std_srvs/srv/Trigger {}
 ---
 
 ## 👨‍💻 Autor
-**Israel Delgado**  
+**Israel Delgado - Anthony Domínguez - Sebastián Guazhima**  
 Universidad de Cuenca – 2025  
 Facultad de Ingeniería – Proyecto de Redes de Sensores Inalámbricos (WSN)
 
 ---
 
-© 2025 Israel Delgado. Todos los derechos reservados.
+© 2025 Israel Delgado - Anthony Domínguez - Sebastián Guazhima. Todos los derechos reservados.
