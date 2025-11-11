@@ -7,11 +7,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip python3-colcon-common-extensions python3-colcon-ros \
     python3-opencv python3-numpy python3-serial python3-matplotlib \
     python3-pil python3-av python3-yaml \
+    python3-prometheus-client \ 
     ros-jazzy-cv-bridge ros-jazzy-image-transport \
     ffmpeg libgl1 libglib2.0-0 \
     iproute2 net-tools iputils-ping curl nano vim tree \
     xauth x11-apps \
  && rm -rf /var/lib/apt/lists/*
+
+# Puerto del exporter
+EXPOSE 8000
 
 # Configurar pip del sistema sin cache
 ENV PIP_NO_CACHE_DIR=1
